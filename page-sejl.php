@@ -71,6 +71,7 @@ get_header();
         let klon = temp.cloneNode(true).content; 
         klon.querySelector("h1").textContent = sejl.overskrift;
         klon.querySelector(".pic").src = sejl.foto.guid; //vi har skrevet 'guid' til sidst, fordi vi i console kunne se at billedet hed det
+        klon.querySelector(".sejl").addEventListener("click", ()=> {location.href = sejl.link;})
         container.appendChild(klon);}
     }); 
   }
