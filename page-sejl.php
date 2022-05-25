@@ -53,6 +53,7 @@ get_header();
     visCat(); 
   /*   opretKnapper(); */
     kaldKnapper();
+    catID(); 
   }
   
 /*  function opretKnapper(){
@@ -67,6 +68,10 @@ get_header();
           elm.addEventListener("click", filtrering)
       })
   }; 
+
+  function catID(){
+      document.querySelector(".categories").setAttribute('data-sejl', ${cat.id}); 
+  }
 
 
    function filtrering(){
