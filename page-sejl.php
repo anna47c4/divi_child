@@ -3,10 +3,22 @@
 get_header();
 ?>
 <!-- START PÅ HTML  -->
+<!-- nedestående template er den vi bruger til at opbygge layoutet omkring vores filtreringsknapper  -->
+<template class="cat">
+    <div class="categories">
+        <div class="tekst">
+            <h1></h1>
+            <p></p>
+        </div>
+        <img class="billede" src="" alt="kategori foto"></div>
+    </div>
+</template>
+
+
 <!-- Nedenfor her har vi lavet en skabelon (template) indeholdene en article, som vores data fra pods' skal bruge til visningen  -->
  <template>
     <article class="sejl">
-         <h1></h1>
+         <h2></h2>
       	 <img class="pic" src="" alt="sejl"/> 
     </article>
  </template>
@@ -14,6 +26,7 @@ get_header();
 <section id="main-content">
  <main id="main">
  <nav id="filtrering"><button class="alle" data-sejl="alle">Alle</button></nav>
+  <section class="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de KATEGORI data vi kloner -->
  <section class="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de data vi kloner -->
  </main><!--slut main -->
 
@@ -69,7 +82,7 @@ get_header();
     sejlene.forEach(sejl => {
         if (filterCat == "alle" || sejl.categories.includes(parseInt(filterCat))){
         let klon = temp.cloneNode(true).content; 
-        klon.querySelector("h1").textContent = sejl.overskrift;
+        klon.querySelector("h2").textContent = sejl.overskrift;
         klon.querySelector(".pic").src = sejl.foto.guid; //vi har skrevet 'guid' til sidst, fordi vi i console kunne se at billedet hed det
         klon.querySelector(".sejl").addEventListener("click", ()=> {location.href = sejl.link;})
         container.appendChild(klon);}
