@@ -31,9 +31,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
         <h1 class="top-heading">Sejl</h1>
          <h2 class="heading-two">Something here</h2>
     </div></section>
- <section class="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
+ <section id="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
 
- <section class="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de SEJL data vi kloner -->
+ <section id="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de SEJL data vi kloner -->
  </main><!--slut main -->
 
 <!-- SLUT PÅ HTML PÅNÆR <SECTION "MAIN-CONTENT"> SOM LUKKES EFTER <SCRIPTET>  -->
@@ -75,7 +75,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 /* HERUNDER ER DEN FUNKTION (visData) som kloner vores SEJL custom pods ind i vores DOM */
   function visData() {
  /* Som det første i denne funktion, sørger vi for at få oprettet to konstanter, vores data container, og vores sejl-template */
-    const container = document.querySelector(".sejl-container");
+    const container = document.querySelector("#sejl-container");
     const sejltemp = document.querySelector("#sejl-temp");
     container.textContent = ""; //her sørger vi for at containeren tømmes hver gang der klikkes på ny, så det ikke hober sig op
 
@@ -91,7 +91,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   }
 /*  Herunder er den funktion som kloner vores KATEGORI-data ind i vores kategori template   */
   function visCat(){
-      const catContainer = document.querySelector(".cat-container"); 
+      const catContainer = document.querySelector("#cat-container"); 
       const catTemp = document.querySelector("#cat-temp"); 
 //herunder bruger vi igen 'forEach(cat)', så vi får en kloning for hver af de kategorier vi har oprettet
       categories.forEach(cat => {
@@ -101,7 +101,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
           klon.querySelector("p").textContent = cat.teasertekst; 
           klon.querySelector(".billede").src = cat.billede.guid; 
           //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
-         klon.querySelector("#knapper").innerHTML += `<button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button>` 
+         klon.querySelector("#knapper").innerHTML += `<a href="#sejl-container"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
       })
   }
@@ -111,7 +111,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 <!-- HER STARTER STYLING  -->
  <style>
-.sejl-container {
+#sejl-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
   grid-gap: 8px;
@@ -177,8 +177,8 @@ h2 {
     .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    margin: 20px; 
-    padding: 20px; 
+  /*   margin: 20px; 
+    padding: 20px;  */
 }
 
 #top-section {
