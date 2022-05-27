@@ -25,15 +25,22 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <!--  HTML STRUKTUR HERUNDER  -->
 <section id="main-content">
  <main id="main">
-<!--  <nav id="filtrering"><button class="alle" data-sejl="alle">Alle</button></nav> -->
+<!-- Herunder har vi den øverste section på siden  -->
 <section id="top-section">
     <div class="top-wrapper">
         <h1 class="top-heading">Sejl</h1>
          <h2 class="heading-two">Something here</h2>
     </div></section>
  <section id="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
+ <!-- Herunder har vi den section der ligger inden produkterne  -->
+ <section id="service-section">
+    <div class="service-wrapper">
+        <h3 class="service-heading">Vores service</h3>
+        <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
+    </div></section>
 
  <section id="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de SEJL data vi kloner -->
+ <a href="#top-section"><button class="til-top">Til toppen</button></a>
  </main><!--slut main -->
 
 <!-- SLUT PÅ HTML PÅNÆR <SECTION "MAIN-CONTENT"> SOM LUKKES EFTER <SCRIPTET>  -->
@@ -101,7 +108,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
           klon.querySelector("p").textContent = cat.teasertekst; 
           klon.querySelector(".billede").src = cat.billede.guid; 
           //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
-         klon.querySelector("#knapper").innerHTML += `<a href="#sejl-container"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
+         klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
       })
   }
@@ -111,85 +118,97 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 <!-- HER STARTER STYLING  -->
  <style>
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}    
 #sejl-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
-  grid-gap: 8px;
-    background-color: #304950; 
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
+grid-gap: 8px;
+background-color: #304950; 
 }
+
 
 /* kategori styling herunder  */
 .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    margin: 8px; 
-    padding: 8px; 
-}
-#top-section {
-    background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
-    background-size: cover; 
-    height: 100px; 
-}
-
-.top-heading {
-    color: #fafaff; 
-    text-transform: uppercase; 
-      padding: 8px; 
-}
-
-.heading-two {
-color: #e98b3d;
-font-size: 0.5rem; 
-  padding: 8px; 
-      text-transform: uppercase; 
-}
-button {
-background-color: #e98b3d;
-border-color: #e98b3d;
-letter-spacing: 4px;
-padding: .3em 1em; 
-border: 2px solid;
-border-radius: 3px; /* forsiens knap har 3px */
-font-weight: 500;
-margin: 8px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+margin: 8px; 
 padding: 8px; 
 }
 
-button:hover{
-  color: #fafaff; 
+/* top section + service section herunder */
+#top-section, #service-section {
+background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
+background-size: cover; 
+height: 100px; 
+}
+
+.top-heading, .service-heading {
+color: #fafaff; 
+text-transform: uppercase; 
+padding: 8px; 
+}
+
+.heading-two, .service-two {
+color: #e98b3d;
+font-size: 0.5rem; 
+padding: 8px; 
+text-transform: uppercase; 
+}
+/* knap styling herunder (gælder alle knapper) */
+button {
+background-color: #e98b3d;
+border-color: /* #e98b3d */ #e98b3d; 
+letter-spacing: 4px;
+padding: .3em 1em; 
+border: 2px solid; 
+border-radius: 3px; /* forsiens knap har 3px */
+font-weight: 500;
+}
+
+/* button:hover{
+color: #fafaff; 
 background-color: #304950;
 border-color: #e98b3d; 
-}
+} */
 
 /* article styles herunder */
 .sejl {
-    border: 0.5px solid #fafaff;
-    background-color: #304950; 
-    padding: 12px; 
-    margin: 12px; 
+border: 0.5px solid #fafaff;
+background-color: #304950; 
+padding: 12px; 
+margin: 12px; 
+}
+h1 {
+    font-weight: bold; 
 }
 h2 {
  color: #fafaff; 
 }
-
-
+/* responsive indstillinger desktop herunder */
  @media (min-width: 810px){
+
+ /* #cat-container{
+ display: grid; 
+ justify-content: center; 
+ } */
     .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   /*   margin: 20px; 
     padding: 20px;  */
 }
-
-#top-section {
+#top-section, #service-section {
     height: 150px; 
 }
-.top-heading {
+.top-heading, .service-heading {
     padding: 12px; 
 }
-.heading-two {
+.heading-two, .service-two {
 font-size: 1rem; 
-padding: 12px; 
 }
  }
 </style>
