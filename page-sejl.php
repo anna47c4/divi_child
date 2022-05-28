@@ -187,6 +187,7 @@ border-color: #e98b3d;
 } 
 .kontakt, .til-top {
 margin: 12px; 
+text-transform: uppercase; 
 }
 
 /* article styles herunder */
