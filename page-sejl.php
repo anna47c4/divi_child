@@ -28,14 +28,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <!-- Herunder har vi den øverste section på siden  -->
 <section id="top-section">
     <div class="top-wrapper">
-        <h1 class="top-heading">Sejl</h1>
-         <h2 class="heading-two">Something here</h2>
+        <h3 class="top-heading">Sejl</h3>
+         <h4 class="heading-two">Something here</h4>
     </div></section>
  <section id="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
  <!-- Herunder har vi den section der ligger inden produkterne  -->
  <section id="service-section">
     <div class="service-wrapper">
-        <h3 class="service-heading">Vores service</h3>
+        <h5 class="service-heading">Vores service</h5>
         <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
     </div></section>
 
@@ -114,7 +114,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   }
   hentData(); //kald af vores funktion der henter dataerne ind 
 </script>
- </section> <!-- skal lukkes efter script  -->
+</section> <!-- skal lukkes efter script  -->
 
 <!-- HER STARTER STYLING  -->
  <style>
@@ -137,10 +137,10 @@ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 margin: 12px; 
 padding: 12px; 
 }
-
 .cat-heading{
 text-decoration: underline; 
 font-weight: bold; 
+font-size: 1rem;
 }
 
 /* top section + service section herunder */
@@ -157,6 +157,7 @@ padding: 8px;
 color: #fafaff; 
 text-transform: uppercase; 
 padding: 8px; 
+font-size: 1rem; 
 }
 .heading-two, .service-two {
 color: #e98b3d;
@@ -195,26 +196,25 @@ background-color: #304950;
 padding: 12px; 
 margin: 12px; 
 }
-h1 {
-font-weight: bold; 
-}
 h2 {
  color: #fafaff; 
+ font-size: 1rem;
 }
 /* responsive indstillinger desktop herunder */
-
- @media (min-width: 790px){
+@media (min-width: 790px){
 .categories {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-margin: 45px; 
-padding: 45px; 
 }
 #top-section, #service-section {
-    height: 150px; 
+height: 150px; 
 }
 .top-heading, .service-heading {
-    padding: 12px; 
+font-size: 1.5rem;
+padding: 12px; 
+}
+.cat-heading, h2{
+font-size: 1.2rem;
 }
 button{
 font-size: 0.9rem; 
@@ -222,8 +222,7 @@ font-size: 0.9rem;
 .heading-two, .service-two {
 font-size: 1rem; 
 }
- }
-
+}
 </style>
 
  <?php
