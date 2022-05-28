@@ -7,8 +7,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <template id="cat-temp"> <!-- CATEGORY TEMPLATE -->
     <div class="categories">
         <div class="tekst">
-            <h1></h1>
-            <p></p>
+            <h1 class="cat-heading"></h1>
+            <p class="cat-p"></p>
             <div id="knapper"><!-- <button data-sejl="alle produkter">ALLE PRODUKTER</button> --></div>
         </div>
         <img class="billede" src="" alt="kategori foto"></div>
@@ -104,8 +104,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
       categories.forEach(cat => {
           let klon = catTemp.cloneNode(true).content; 
           klon.querySelector(".categories").classList.add(cat.id); //her tilføjer vi kategoriernes ID som en class
-          klon.querySelector("h1").textContent = cat.name; 
-          klon.querySelector("p").textContent = cat.teasertekst; 
+          klon.querySelector(".cat-heading").textContent = cat.name; 
+          klon.querySelector(".cat-p").textContent = cat.teasertekst; 
           klon.querySelector(".billede").src = cat.billede.guid; 
           //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
          klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
@@ -130,13 +130,17 @@ grid-gap: 8px;
 background-color: #304950; 
 }
 
-
 /* kategori styling herunder  */
 .categories {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-margin: 8px; 
-padding: 8px; 
+margin: 12px; 
+padding: 12px; 
+}
+
+.cat-heading{
+text-decoration: underline; 
+font-weight: bold; 
 }
 
 /* top section + service section herunder */
@@ -145,35 +149,44 @@ background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
 background-size: cover; 
 height: 100px; 
 }
-
+.top-wrapper, .service-wrapper {
+margin: 8px;
+padding: 8px; 
+}
 .top-heading, .service-heading {
 color: #fafaff; 
 text-transform: uppercase; 
 padding: 8px; 
 }
-
 .heading-two, .service-two {
 color: #e98b3d;
 font-size: 0.5rem; 
 padding: 8px; 
 text-transform: uppercase; 
 }
+
 /* knap styling herunder (gælder alle knapper) */
 button {
+color: #304950; 
 background-color: #e98b3d;
-border-color: /* #e98b3d */ #e98b3d; 
+border: none; 
 letter-spacing: 4px;
+font-size: 0.7rem; 
 padding: .3em 1em; 
-border: 2px solid; 
-border-radius: 3px; /* forsiens knap har 3px */
+border-radius: 3px; 
 font-weight: 500;
-}
+margin-top: 12px; 
+} 
 
-/* button:hover{
+button:hover{
 color: #fafaff; 
 background-color: #304950;
+border: 1.5px solid; 
 border-color: #e98b3d; 
-} */
+} 
+.kontakt, .til-top {
+margin: 12px; 
+}
 
 /* article styles herunder */
 .sejl {
@@ -183,23 +196,19 @@ padding: 12px;
 margin: 12px; 
 }
 h1 {
-    font-weight: bold; 
+font-weight: bold; 
 }
 h2 {
  color: #fafaff; 
 }
 /* responsive indstillinger desktop herunder */
- @media (min-width: 810px){
 
- /* #cat-container{
- display: grid; 
- justify-content: center; 
- } */
-    .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  /*   margin: 20px; 
-    padding: 20px;  */
+ @media (min-width: 790px){
+.categories {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+margin: 45px; 
+padding: 45px; 
 }
 #top-section, #service-section {
     height: 150px; 
@@ -207,10 +216,14 @@ h2 {
 .top-heading, .service-heading {
     padding: 12px; 
 }
+button{
+font-size: 0.9rem; 
+}
 .heading-two, .service-two {
 font-size: 1rem; 
 }
  }
+
 </style>
 
  <?php
