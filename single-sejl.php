@@ -10,11 +10,13 @@ get_header();
     <div id="left-column">
     <img class="pic" src="" alt="sejl"/> 
     </div>
-    
     <div id="right-column">
-    <h1></h1>
-    <p></p>
-    <button clas="kontakt">Kontakt</button>
+    <div class="button-wrap">
+    <button class="back"><img src="http://perfpics.dk/kea/2_sem/placeholder/cross.png"></button>
+    </div>
+    <h1 class="product-heading"></h1>
+    <p class="product-p"></p>
+   <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
     </div>
     </article>
     </main>
@@ -35,14 +37,86 @@ get_header();
 
     function visData(){
         document.querySelector(".pic").src = sejl.foto.guid; 
-        document.querySelector("h1").textContent = sejl.overskrift; 
-        document.querySelector("p").textContent = sejl.langtekst; 
+        document.querySelector(".product-heading").textContent = sejl.overskrift; 
+        document.querySelector(".product-p").textContent = sejl.langtekst; 
+        document.querySelector(".back").addEventListener("click", historyBack);
     }  
-    
+      function historyBack() {
+        history.back();
+      }
     hentData(); 
 </script>
 </section> <!-- skal først lukkes efter scriptet  -->
 
+<style>
+main {
+max-width: 1800px; 
+}    
+.sejl {
+/* display: grid;
+grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
+/* grid-gap: 8px; */ 
+background-color: #304950; 
+}   
+#right-column{
+margin: 30px 5px 15px 20px; 
+padding: 8px; 
+line-height: 2;  
+}
+
+button {
+color: #304950; 
+background-color: #e98b3d;
+border: none; 
+letter-spacing: 4px;
+font-size: 0.7rem; 
+padding: .3em 1em; 
+border-radius: 3px; 
+font-weight: 500;
+cursor: pointer; 
+margin: 12px 0px 30px 0px;  
+} 
+
+button:hover{
+color: #fafaff; 
+background-color: #304950;
+border: 1.5px solid; 
+border-color: #e98b3d; 
+} 
+.button-wrap{
+display: flex;
+place-content: end; 
+}
+.back{
+background-color: #304950;
+cursor: pointer; 
+margin-right: 12px; 
+}
+.product-heading{
+color: #fafaff; 
+margin-bottom: 12px; 
+}
+.product-p{
+color: #E9E9EB; 
+}
+.pic {
+width: 100%; 
+}
+
+/* responsive indstillinger herunder  */
+@media (min-width: 650px){
+.sejl {
+display: grid;
+grid-template-columns: 1fr 1fr; 
+}
+#left-column{
+grid-column: 1;  
+}
+
+
+}
+
+</style>
 
 
 

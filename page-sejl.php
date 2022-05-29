@@ -136,6 +136,8 @@ display: grid;
 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 margin: 12px; 
 padding: 12px; 
+border: 0.5px solid #304950; 
+border-radius: 3px; 
 }
 .cat-heading{
 text-decoration: underline; 
@@ -177,6 +179,7 @@ padding: .3em 1em;
 border-radius: 3px; 
 font-weight: 500;
 margin-top: 12px; 
+cursor: pointer; 
 } 
 
 button:hover{
@@ -196,6 +199,7 @@ border: 0.5px solid #fafaff;
 background-color: #304950; 
 padding: 12px; 
 margin: 12px; 
+cursor: pointer; 
 }
 h2 {
  color: #fafaff; 
