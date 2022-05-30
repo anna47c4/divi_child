@@ -154,16 +154,16 @@ border-radius: 3px;
 background-color: #fafaff;
 }
 .cat-heading{
-text-decoration: underline; 
-font-weight: bold; 
+font-weight: 1000; 
 font-size: 1rem;
 }
 
 /* top section + service section herunder */
 #top-section {
-background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
-background-size: cover; 
+/* background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
+background-size: cover;  */
 height: 300px; 
+background-color: #304950; 
 }
 .top-wrapper, .service-wrapper {
 margin: 8px;
@@ -178,7 +178,7 @@ font-size: 1rem;
 .service-heading{
   color: black; 
 }
-.heading-two, .service-two {
+.heading-two {
 color: #e98b3d;
 font-size: 0.5rem; 
 padding-left: 8px; 
@@ -232,10 +232,13 @@ grid-template-columns: 1fr 1fr 1fr;
 }
 
 #top-section, #service-section {
-height: 150px; 
 }
-.top-heading, .service-heading {
+.top-heading,  {
 font-size: 1.5rem;
+padding: 12px; 
+}
+.service-heading{
+font-size: 1.2rem;
 padding: 12px; 
 }
 .cat-heading, h2{
@@ -248,7 +251,7 @@ font-size: 1.2rem;
 button{
 font-size: 0.9rem; 
 }
-.heading-two, .service-two {
+.heading-two {
 font-size: 1rem; 
 }
 }
