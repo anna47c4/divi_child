@@ -95,9 +95,11 @@ margin-right: 12px;
 .product-heading{
 color: #fafaff; 
 margin-bottom: 12px; 
+font-size: 1.5rem;
 }
 .product-p{
 color: #E9E9EB; 
+margin-right: 8px; 
 }
 .pic {
 width: 100%; 

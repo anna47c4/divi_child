@@ -10,8 +10,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
             <h1 class="cat-heading"></h1>
             <p class="cat-p"></p>
             <div id="knapper"><!-- <button data-sejl="alle produkter">ALLE PRODUKTER</button> --></div>
-        </div>
-        <img class="billede" src="" alt="kategori foto"></div>
+      <!--   </div>
+        <img class="billede" src="" alt="kategori foto"></div> -->
     </div>
 </template>
 
@@ -29,13 +29,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <section id="top-section">
     <div class="top-wrapper">
         <h3 class="top-heading">Sejl</h3>
-         <h4 class="heading-two">Something here</h4>
+         <h4 class="heading-two">Håndlavet sejl</h4>
     </div></section>
  <section id="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
  <!-- Herunder har vi den section der ligger inden produkterne  -->
  <section id="service-section">
     <div class="service-wrapper">
-        <h5 class="service-heading">Vores service</h5>
+        <h5 class="service-heading">Alle produkter</h5>
         <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
     </div></section>
 
@@ -50,6 +50,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   let sejlene; 
   let categories; 
   let filterCat = ""; 
+  const heading = document.querySelector(".service-heading");
 
   const url = "http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-json/wp/v2/sejl?per_page=100" //denne url går til vores SEJL data
   const catUrl = "http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-json/wp/v2/categories?per_page=100" //denne url går til vores KATEGORI data
@@ -77,6 +78,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
    function filtrering(){
      filterCat = this.dataset.sejl; //fordi vi bruger 'this', og vi i opbygningen af knapperne sætter data-sejl=cat.id som attribut, så får vi altså vist præcist den kategori som knappen gemmer på, da den hiver fat i kategoriens ID
      console.log(filterCat); 
+     heading.textContent = "Vores " + this.textContent; 
      visData(); //vi kalder vores vis funktion, så det rigtige indhold til den rigtige kategori kan vises
     }
 /* HERUNDER ER DEN FUNKTION (visData) som kloner vores SEJL custom pods ind i vores DOM */
@@ -106,12 +108,15 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
           klon.querySelector(".categories").classList.add(cat.id); //her tilføjer vi kategoriernes ID som en class
           klon.querySelector(".cat-heading").textContent = cat.name; 
           klon.querySelector(".cat-p").textContent = cat.teasertekst; 
-          klon.querySelector(".billede").src = cat.billede.guid; 
+        /*   klon.querySelector(".billede").src = cat.billede.guid;  - vi har fjernet billedet fra kategori-visning */
+
           //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
          klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
       })
   }
+
+
   hentData(); //kald af vores funktion der henter dataerne ind 
 </script>
 </section> <!-- skal lukkes efter script  -->
@@ -122,22 +127,31 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}    
+}   
+/* main {
+background-color:#304950; 
+} */
+/* sejl prodkt styles herunder */  
 #sejl-container {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
+grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
 grid-gap: 8px;
-background-color: #304950; 
+/* background-color: #304950;  */
 }
 
 /* kategori styling herunder  */
+#cat-container{
+  display: grid;
+  margin: 30px 8px 30px 8px; 
+/*   background-color:#304950;  */
+}
 .categories {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+/* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); - udkommenteret da vi ikke har brug for kolonner når vi ikke har billede i kategorien*/
 margin: 12px; 
 padding: 12px; 
 border: 0.5px solid #304950; 
 border-radius: 3px; 
+background-color: #fafaff;
 }
 .cat-heading{
 text-decoration: underline; 
@@ -146,10 +160,10 @@ font-size: 1rem;
 }
 
 /* top section + service section herunder */
-#top-section, #service-section {
+#top-section {
 background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
 background-size: cover; 
-height: 100px; 
+height: 300px; 
 }
 .top-wrapper, .service-wrapper {
 margin: 8px;
@@ -161,10 +175,13 @@ text-transform: uppercase;
 padding: 8px; 
 font-size: 1rem; 
 }
+.service-heading{
+  color: black; 
+}
 .heading-two, .service-two {
 color: #e98b3d;
 font-size: 0.5rem; 
-padding: 8px; 
+padding-left: 8px; 
 text-transform: uppercase; 
 }
 
@@ -195,22 +212,25 @@ text-transform: uppercase;
 
 /* article styles herunder */
 .sejl {
-border: 0.5px solid #fafaff;
-background-color: #304950; 
+border: 0.5px solid #304950;
+border-radius: 3px; 
+/* background-color: #304950;  */
 padding: 12px; 
 margin: 12px; 
 cursor: pointer; 
 }
 h2 {
- color: #fafaff; 
+ color: black; 
  font-size: 1rem;
 }
 /* responsive indstillinger desktop herunder */
 @media (min-width: 790px){
-.categories {
+#cat-container {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-template-columns: 1fr 1fr 1fr; 
+/* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 }
+
 #top-section, #service-section {
 height: 150px; 
 }
@@ -220,6 +240,10 @@ padding: 12px;
 }
 .cat-heading, h2{
 font-size: 1.2rem;
+}
+#knapper {
+  display: flex;
+  align-items: baseline; 
 }
 button{
 font-size: 0.9rem; 
