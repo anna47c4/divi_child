@@ -28,9 +28,19 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <!-- Herunder har vi den øverste section på siden  -->
 <section id="top-section">
     <div class="top-wrapper">
+      <div class="left">
+        <div class="left-wrapper">
         <h3 class="top-heading">Sejl</h3>
-         <h4 class="heading-two">Håndlavet sejl</h4>
+        <h4 class="heading-two">Håndlavet sejl</h4>
+        </div>
+      </div>
+      <div class="right">
+        <div class="right-wrapper">
+        <img class="top-pic" alt="topfoto" src="http://perfpics.dk/kea/2_sem/placeholder/ph_top.png"/>
+        </div>
+      </div>
     </div></section>
+
  <section id="cat-container"></section><!--her har vi den tomme section, som fungerer som beholder til de CATEGORIES data vi kloner -->
  <!-- Herunder har vi den section der ligger inden produkterne  -->
  <section id="service-section">
@@ -127,9 +137,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   padding: 0;
   box-sizing: border-box;
 }   
-/* main {
-background-color:#304950; 
-} */
+
 /* sejl prodkt styles herunder */  
 #sejl-container {
 display: grid;
@@ -159,15 +167,25 @@ font-size: 1rem;
 
 /* top section + service section herunder */
 #top-section {
-/* background-image: url("http://perfpics.dk/kea/2_sem/placeholder/ph_top.png");
-background-size: cover;  */
-height: 300px; 
 background-color: #304950; 
+box-shadow: inset 0px 100px 0px 0px #ffffff;
+padding: 2% 0;
 }
-.top-wrapper, .service-wrapper {
+/* .right, .right-wrapper{
+  max-width: 100%;
+  width: 100%; 
+} */
+.top-pic{
+  width: 100%; 
+}
+.right-wrapper{
+
+}
+.service-wrapper {
 margin: 8px;
 padding: 8px; 
 }
+
 .top-heading, .service-heading {
 color: #fafaff; 
 text-transform: uppercase; 
@@ -229,10 +247,13 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr; 
 /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 }
-
-#top-section, #service-section {
+.top-wrapper{
+display: flex; 
 }
-.top-heading,  {
+.top-pic{
+  height: 50%; 
+}
+.top-heading {
 font-size: 1.5rem;
 padding: 12px; 
 }
@@ -244,8 +265,8 @@ padding: 12px;
 font-size: 1.2rem;
 }
 #knapper {
-  display: flex;
-  align-items: baseline; 
+display: flex;
+align-items: baseline; 
 }
 button{
 font-size: 0.9rem; 
