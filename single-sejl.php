@@ -16,7 +16,7 @@ get_header();
     </div>
     <h1 class="product-heading"></h1>
     <p class="product-p"></p>
-   <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
+   <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt/"><button class="kontakt">Kontakt</button></a>
     </div>
     </article>
     </main>

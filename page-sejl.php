@@ -50,7 +50,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   let sejlene; 
   let categories; 
   let filterCat = ""; 
-  const heading = document.querySelector(".service-heading");
+  const serviceHeading = document.querySelector(".service-heading");
 
   const url = "http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-json/wp/v2/sejl?per_page=100" //denne url går til vores SEJL data
   const catUrl = "http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-json/wp/v2/categories?per_page=100" //denne url går til vores KATEGORI data
@@ -78,7 +78,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
    function filtrering(){
      filterCat = this.dataset.sejl; //fordi vi bruger 'this', og vi i opbygningen af knapperne sætter data-sejl=cat.id som attribut, så får vi altså vist præcist den kategori som knappen gemmer på, da den hiver fat i kategoriens ID
      console.log(filterCat); 
-     heading.textContent = this.dataset.heading; 
+     serviceHeading.textContent = this.dataset.heading; //her sørger vi for at vores 'service-heading' ændrer indhold alt efter hvilken kategori-knap man har trykket på
      visData(); //vi kalder vores vis funktion, så det rigtige indhold til den rigtige kategori kan vises
     }
 /* HERUNDER ER DEN FUNKTION (visData) som kloner vores SEJL custom pods ind i vores DOM */
@@ -109,8 +109,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
           klon.querySelector(".cat-heading").textContent = cat.name; 
           klon.querySelector(".cat-p").textContent = cat.teasertekst; 
         /*   klon.querySelector(".billede").src = cat.billede.guid;  - vi har fjernet billedet fra kategori-visning */
-
-          //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
+         //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres) + data-heading, så vi kan bruge det til vores overskrift i filtreringsfunktionen
          klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-heading="${cat.name}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
       })
@@ -176,7 +175,7 @@ padding: 8px;
 font-size: 1rem; 
 }
 .service-heading{
-  color: black; 
+  color: #191919; 
 }
 .heading-two {
 color: #e98b3d;
