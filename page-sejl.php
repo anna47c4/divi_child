@@ -78,7 +78,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
    function filtrering(){
      filterCat = this.dataset.sejl; //fordi vi bruger 'this', og vi i opbygningen af knapperne sætter data-sejl=cat.id som attribut, så får vi altså vist præcist den kategori som knappen gemmer på, da den hiver fat i kategoriens ID
      console.log(filterCat); 
-     heading.textContent = "Vores " + this.textContent; 
+     heading.textContent = this.dataset.heading; 
      visData(); //vi kalder vores vis funktion, så det rigtige indhold til den rigtige kategori kan vises
     }
 /* HERUNDER ER DEN FUNKTION (visData) som kloner vores SEJL custom pods ind i vores DOM */
@@ -111,7 +111,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
         /*   klon.querySelector(".billede").src = cat.billede.guid;  - vi har fjernet billedet fra kategori-visning */
 
           //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres)
-         klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
+         klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-heading="${cat.name}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
       })
   }
