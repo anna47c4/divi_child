@@ -30,13 +30,15 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
     <div class="top-wrapper">
       <div class="left">
         <div class="left-wrapper">
+          <div class="top-tekst">
         <h3 class="top-heading">Sejl</h3>
-        <h4 class="heading-two">Håndlavet sejl</h4>
+        <p class="top-p">Herunder finder du vores udvalg af sejl og canvas produkter, samt services. Her er brug for lidt mere tekst, for at vurdere layoutet.</p>
+        </div>
         </div>
       </div>
       <div class="right">
         <div class="right-wrapper">
-        <img class="top-pic" alt="topfoto" src="http://perfpics.dk/kea/2_sem/placeholder/ph_top.png"/>
+        <img class="top-pic" alt="topfoto" src="http://perfpics.dk/kea/2_sem/placeholder/top_foto.jpg"/>
         </div>
       </div>
     </div></section>
@@ -141,7 +143,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 /* sejl prodkt styles herunder */  
 #sejl-container {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
+grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
 grid-gap: 8px;
 /* background-color: #304950;  */
 }
@@ -150,7 +152,6 @@ grid-gap: 8px;
 #cat-container{
   display: grid;
   margin: 30px 8px 30px 8px; 
-/*   background-color:#304950;  */
 }
 .categories {
 /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); - udkommenteret da vi ikke har brug for kolonner når vi ikke har billede i kategorien*/
@@ -165,35 +166,81 @@ font-weight: 1000;
 font-size: 1rem;
 }
 
-/* top section + service section herunder */
+/* top section MOBILE + service section herunder */
 #top-section {
-background-color: #304950; 
+background-image: url(http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-content/uploads/2022/05/282830621_309950614687409_9105901920455162344_n.png); 
 box-shadow: inset 0px 100px 0px 0px #ffffff;
-padding: 2% 0;
+padding-top: 3px; 
+background-position: 50%; 
+background-size: cover;
+/* padding: 2% 0; */
+/* height: 600px;  */
 }
-/* .right, .right-wrapper{
-  max-width: 100%;
-  width: 100%; 
+.top-wrapper{
+padding-top: 140px;   
+width: 100%;
+max-width: 100%; 
+/* background-position: 50%;
+background-repeat: no-repeat;
+float: left;
+position: relative;
+z-index: 2;
+min-height: 1px;  */
+}
+.top-tekst{
+padding-left: 10%;
+padding-bottom: 30px; 
+text-align: left;
+word-wrap: break-word;
+max-width: 75%;
+color:  #fafaff; 
+}
+.top-pic{
+padding-bottom: 40px; 
+}
+.top-heading{
+font-size: 2rem; 
+color: #fafaff;   
+line-height: 1.9em;
+text-align: left;
+padding-bottom: 20px; 
+}
+/* .left-wrapper{
+padding-bottom: 20px;
+}
+.right-wrapper{
+padding-top: 0px;
+}
+.top-tekst{
+padding-left: 10%;
+width: 100%;
+position: relative;
 } */
+/* .top-p{
+line-height: 1.5em;
+text-align: left;
+padding-bottom: 30px; 
+} */
+@media(min-width: 479px;){
+} 
+
 .top-pic{
   width: 100%; 
 }
 .right-wrapper{
-
 }
 .service-wrapper {
 margin: 8px;
 padding: 8px; 
 }
-
-.top-heading, .service-heading {
-color: #fafaff; 
+.service-heading {
+color: #191919; 
 text-transform: uppercase; 
 padding: 8px; 
 font-size: 1rem; 
 }
 .service-heading{
-  color: #191919; 
+color: #191919; 
 }
 .heading-two {
 color: #e98b3d;
@@ -247,15 +294,39 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr; 
 /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 }
+#top-section{
+padding: 2% 0;
+}
 .top-wrapper{
 display: flex; 
 }
-.top-pic{
-  height: 50%; 
+.left, .right{
+  width: 50%
+}
+/* .right-wrapper{
+position: relative; 
+padding-top: 0;  
+z-index: 2;
+} */
+.right{
+padding-top: 0px;  
+float: left;
+position: relative;
+z-index: 2;
+/* min-height: 1px;  */
+margin-right: 0; 
+}
+.top-tekst{
+width: 100%;
+position: relative;
 }
 .top-heading {
 font-size: 1.5rem;
-padding: 12px; 
+/* padding: 12px;  */
+}
+.top-pic{
+  max-width: 100%;
+  height: auto; 
 }
 .service-heading{
 font-size: 1.2rem;
