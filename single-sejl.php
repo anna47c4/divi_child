@@ -68,13 +68,15 @@ button {
 color: #304950; 
 background-color: #e98b3d;
 border: none; 
-letter-spacing: 4px;
+letter-spacing: 6px;
 font-size: 0.7rem; 
-padding: .3em 1em; 
+line-height: 1.7em; 
+padding: 1em; 
+text-transform: uppercase; 
 border-radius: 3px; 
 font-weight: 500;
 cursor: pointer; 
-margin: 12px 0px 30px 0px;  
+margin: 15px 0px 30px 0px;  
 } 
 
 button:hover{
@@ -95,7 +97,7 @@ margin-right: 12px;
 .product-heading{
 color: #fafaff; 
 margin-bottom: 12px; 
-font-size: 1.5rem;
+font-size: 2rem;
 }
 .product-p{
 color: #E9E9EB; 

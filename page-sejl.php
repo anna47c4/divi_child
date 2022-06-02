@@ -32,13 +32,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
         <div class="left-wrapper">
           <div class="top-tekst">
         <h3 class="top-heading">Sejl</h3>
-        <p class="top-p">Herunder finder du vores udvalg af sejl og canvas produkter, samt services. Her er brug for lidt mere tekst, for at vurdere layoutet.</p>
+        <p class="top-p">Herunder finder du vores udvalg af sejl og canvas produkter, samt de services vi udbyder. Vi står altid klar til at vejlede, og du er mere end velkommen til at kontakte os for et uforpligtende tilbud.</p>
+        <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt/"><button class="kontakt">Kontakt</button></a>
         </div>
         </div>
       </div>
       <div class="right">
         <div class="right-wrapper">
-        <img class="top-pic" alt="topfoto" src="http://perfpics.dk/kea/2_sem/placeholder/top_foto.jpg"/>
+        <img class="top-pic" alt="topfoto" src="http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-content/uploads/2022/06/sejl-scaled.jpg"/>
         </div>
       </div>
     </div></section>
@@ -48,11 +49,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
  <section id="service-section">
     <div class="service-wrapper">
         <h5 class="service-heading">Alle produkter</h5>
-        <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a>
+      <!--   <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a> -->
     </div></section>
 
  <section id="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de SEJL data vi kloner -->
- <a href="#top-section"><button class="til-top">Til toppen</button></a>
  </main><!--slut main -->
 
 <!-- SLUT PÅ HTML PÅNÆR <SECTION "MAIN-CONTENT"> SOM LUKKES EFTER <SCRIPTET>  -->
@@ -120,7 +120,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
           klon.querySelector(".categories").classList.add(cat.id); //her tilføjer vi kategoriernes ID som en class
           klon.querySelector(".cat-heading").textContent = cat.name; 
           klon.querySelector(".cat-p").textContent = cat.teasertekst; 
-        /*   klon.querySelector(".billede").src = cat.billede.guid;  - vi har fjernet billedet fra kategori-visning */
+        
          //herunder hiver vi fat i vores div #knapper, og tilføjer knapperne med innerHTML, vi tilføjer data-sejl= kategoriernes ID (så filtreringen kan udføres) + data-heading, så vi kan bruge det til vores overskrift i filtreringsfunktionen
          klon.querySelector("#knapper").innerHTML += `<a href="#service-section"><button class="filter ${cat.id}" data-heading="${cat.name}" data-sejl="${cat.id}">${cat.knaptekst}</button></a>` 
           catContainer.appendChild(klon); 
@@ -143,7 +143,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 /* sejl prodkt styles herunder */  
 #sejl-container {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
 grid-gap: 8px;
 /* background-color: #304950;  */
 }
@@ -151,7 +151,7 @@ grid-gap: 8px;
 /* kategori styling herunder  */
 #cat-container{
   display: grid;
-  margin: 30px 8px 30px 8px; 
+  margin: 30px 0px 30px 0px; 
 }
 .categories {
 /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); - udkommenteret da vi ikke har brug for kolonner når vi ikke har billede i kategorien*/
@@ -160,6 +160,8 @@ padding: 12px;
 border: 0.5px solid #304950; 
 border-radius: 3px; 
 background-color: #fafaff;
+background-image: url(http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-content/uploads/2022/05/footer.png);
+background-size: cover;
 }
 .cat-heading{
 font-weight: 1000; 
@@ -194,16 +196,16 @@ text-align: left;
 word-wrap: break-word;
 max-width: 75%;
 color:  #fafaff; 
+line-height: 1.9em;
 }
 .top-pic{
 padding-bottom: 40px; 
 }
 .top-heading{
-font-size: 2rem; 
+font-size: 2.3rem; 
 color: #fafaff;   
-line-height: 1.9em;
 text-align: left;
-padding-bottom: 20px; 
+padding-bottom: 40px; 
 }
 /* .left-wrapper{
 padding-bottom: 20px;
@@ -221,9 +223,13 @@ line-height: 1.5em;
 text-align: left;
 padding-bottom: 30px; 
 } */
-@media(min-width: 479px;){
-} 
-
+.top-p{
+  padding-bottom: 15px; 
+}
+.kontakt{
+  margin-top: 20px; 
+  text-transform: uppercase; 
+}
 .top-pic{
   width: 100%; 
 }
@@ -236,8 +242,8 @@ padding: 8px;
 .service-heading {
 color: #191919; 
 text-transform: uppercase; 
-padding: 8px; 
-font-size: 1rem; 
+font-weight: bold; 
+font-size: 1.5rem; 
 }
 .service-heading{
 color: #191919; 
@@ -254,12 +260,14 @@ button {
 color: #304950; 
 background-color: #e98b3d;
 border: none; 
-letter-spacing: 4px;
-font-size: 0.7rem; 
-padding: .3em 1em; 
+letter-spacing: 6px;
+font-size: 0.8rem; 
+/* padding: .3em 1em;  */
+padding: 1em; 
 border-radius: 3px; 
 font-weight: 500;
 margin-top: 12px; 
+line-height: 1.7em; 
 cursor: pointer; 
 } 
 
@@ -269,10 +277,10 @@ background-color: #304950;
 border: 1.5px solid; 
 border-color: #e98b3d; 
 } 
-.kontakt, .til-top {
-margin: 12px; 
+/* .kontakt {
+margin: 12px;  
 text-transform: uppercase; 
-}
+} */
 
 /* article styles herunder */
 .sejl {
@@ -292,8 +300,15 @@ h2 {
 #cat-container {
 display: grid;
 grid-template-columns: 1fr 1fr 1fr; 
+margin-right: 75px; 
+margin-left: 75px; 
 /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 }
+#sejl-container{
+  margin-right: 75px; 
+  margin-left: 75px; 
+}
+
 #top-section{
 padding: 2% 0;
 }
@@ -319,10 +334,18 @@ margin-right: 0;
 .top-tekst{
 width: 100%;
 position: relative;
+padding-left: 25%;
 }
-.top-heading {
-font-size: 1.5rem;
-/* padding: 12px;  */
+.top-heading{
+  font-size: 3.3rem;
+  padding-bottom: 60px; 
+}
+.top-p{
+  font-size: 1rem; 
+  padding-bottom: 50px; 
+}
+.kontakt{
+  margin-top: 50px;  
 }
 .top-pic{
   max-width: 100%;
@@ -330,8 +353,9 @@ font-size: 1.5rem;
 }
 .service-heading{
 font-size: 1.2rem;
-padding: 12px; 
+margin-left: 75px; 
 }
+
 .cat-heading, h2{
 font-size: 1.2rem;
 }
@@ -346,6 +370,21 @@ font-size: 0.9rem;
 font-size: 1rem; 
 }
 }
+
+}
+@media (min-width: 980px){
+.categories{
+/*   margin: 50px;  */
+  padding: 30px;  
+}
+
+}
+@media (min-width: 1200px){
+  .categories{
+ padding: 45px; 
+}
+}
+
 </style>
 
  <?php
