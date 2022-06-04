@@ -9,9 +9,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
         <div class="tekst">
             <h1 class="cat-heading"></h1>
             <p class="cat-p"></p>
-            <div id="knapper"><!-- <button data-sejl="alle produkter">ALLE PRODUKTER</button> --></div>
-      <!--   </div>
-        <img class="billede" src="" alt="kategori foto"></div> -->
+            <div id="knapper"></div>
     </div>
 </template>
 
@@ -49,7 +47,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
  <section id="service-section">
     <div class="service-wrapper">
         <h5 class="service-heading">Alle produkter</h5>
-      <!--   <a href="http://perfpics.dk/kea/2_sem/sejlservice_wp/kontakt-v2/"><button class="kontakt">Kontakt</button></a> -->
     </div></section>
 
  <section id="sejl-container"></section><!--her har vi den tomme section, som fungerer som beholder til de SEJL data vi kloner -->
@@ -140,21 +137,19 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
   box-sizing: border-box;
 }   
 
-/* sejl prodkt styles herunder */  
+/* Overordnet sejl styling, sejl-articles kommer længere nede */  
 #sejl-container {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
 grid-gap: 8px;
-/* background-color: #304950;  */
 }
 
-/* kategori styling herunder  */
+/* kategori (Cat) styling herunder  */
 #cat-container{
   display: grid;
   margin: 30px 0px 30px 0px; 
 }
 .categories {
-/* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); - udkommenteret da vi ikke har brug for kolonner når vi ikke har billede i kategorien*/
 margin: 12px; 
 padding: 12px; 
 border: 0.5px solid #304950; 
@@ -175,19 +170,11 @@ box-shadow: inset 0px 100px 0px 0px #ffffff;
 padding-top: 3px; 
 background-position: 50%; 
 background-size: cover;
-/* padding: 2% 0; */
-/* height: 600px;  */
 }
 .top-wrapper{
 padding-top: 140px;   
 width: 100%;
 max-width: 100%; 
-/* background-position: 50%;
-background-repeat: no-repeat;
-float: left;
-position: relative;
-z-index: 2;
-min-height: 1px;  */
 }
 .top-tekst{
 padding-left: 10%;
@@ -200,6 +187,7 @@ line-height: 1.9em;
 }
 .top-pic{
 padding-bottom: 40px; 
+width: 100%; 
 }
 .top-heading{
 font-size: 2.3rem; 
@@ -207,33 +195,12 @@ color: #fafaff;
 text-align: left;
 padding-bottom: 40px; 
 }
-/* .left-wrapper{
-padding-bottom: 20px;
-}
-.right-wrapper{
-padding-top: 0px;
-}
-.top-tekst{
-padding-left: 10%;
-width: 100%;
-position: relative;
-} */
-/* .top-p{
-line-height: 1.5em;
-text-align: left;
-padding-bottom: 30px; 
-} */
 .top-p{
   padding-bottom: 15px; 
 }
-.kontakt{
+.kontakt /* (knap) */ {
   margin-top: 20px; 
   text-transform: uppercase; 
-}
-.top-pic{
-  width: 100%; 
-}
-.right-wrapper{
 }
 .service-wrapper {
 margin: 8px;
@@ -262,7 +229,6 @@ background-color: #e98b3d;
 border: none; 
 letter-spacing: 6px;
 font-size: 0.8rem; 
-/* padding: .3em 1em;  */
 padding: 1em; 
 border-radius: 3px; 
 font-weight: 500;
@@ -277,16 +243,11 @@ background-color: #304950;
 border: 1.5px solid; 
 border-color: #e98b3d; 
 } 
-/* .kontakt {
-margin: 12px;  
-text-transform: uppercase; 
-} */
 
 /* article styles herunder */
 .sejl {
 border: 0.5px solid #304950;
 border-radius: 3px; 
-/* background-color: #304950;  */
 padding: 12px; 
 margin: 12px; 
 cursor: pointer; 
@@ -302,13 +263,11 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr; 
 margin-right: 75px; 
 margin-left: 75px; 
-/* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 }
 #sejl-container{
   margin-right: 75px; 
   margin-left: 75px; 
 }
-
 #top-section{
 padding: 2% 0;
 }
@@ -318,17 +277,11 @@ display: flex;
 .left, .right{
   width: 50%
 }
-/* .right-wrapper{
-position: relative; 
-padding-top: 0;  
-z-index: 2;
-} */
 .right{
 padding-top: 0px;  
 float: left;
 position: relative;
 z-index: 2;
-/* min-height: 1px;  */
 margin-right: 0; 
 }
 .top-tekst{
@@ -355,7 +308,6 @@ padding-left: 25%;
 font-size: 1.2rem;
 margin-left: 75px; 
 }
-
 .cat-heading, h2{
 font-size: 1.2rem;
 }
@@ -374,7 +326,6 @@ font-size: 1rem;
 }
 @media (min-width: 980px){
 .categories{
-/*   margin: 50px;  */
   padding: 30px;  
 }
 
