@@ -3,7 +3,7 @@
 get_header();
 
 ?>
-
+<!-- HTML STRUKTUR herunder  -->
 <section id="primary" class="content-area">
     <main id="main" class="site-main">
     <article class="sejl">
@@ -27,19 +27,19 @@ get_header();
 
     //her laver vi en konstant til vores url, som vi bruger til at fetche vores data ind, og den php snippet der står til slut, bruger vi for at få fat i ID'et for hver custom pod
     const url = "http://perfpics.dk/kea/2_sem/sejlservice_wp/wp-json/wp/v2/sejl/"+<?php echo get_the_ID()?>;
-
+    //her kører vi igen vores fetch funktion som modtager vores data, og så kalder vi vores visData funktion 
     async function hentData() {
         const respons = await fetch(url);
         sejl = await respons.json(); 
         console.log(sejl); 
         visData()
         }
-
+    //i vores visData funktion, er der forskel fra vores sejl-page side, på den måde at nu er det ikke en klon, nu er det direkte i vores DOM
     function visData(){
         document.querySelector(".pic").src = sejl.foto.guid; 
         document.querySelector(".product-heading").textContent = sejl.overskrift; 
         document.querySelector(".product-p").textContent = sejl.langtekst; 
-        document.querySelector(".back").addEventListener("click", historyBack);
+        document.querySelector(".back").addEventListener("click", historyBack); //knap der sender en tilbage til sejl-page siden
     }  
       function historyBack() {
         history.back();
@@ -53,9 +53,6 @@ main {
 max-width: 1800px; 
 }    
 .sejl {
-/* display: grid;
-grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* - størrelsen skal nok ændres men det er overskueligt imens der arbejdes  */
-/* grid-gap: 8px; */ 
 background-color: #304950; 
 }   
 #right-column{
@@ -116,15 +113,9 @@ grid-template-columns: 1fr 1fr;
 #left-column{
 grid-column: 1;  
 }
-
-
 }
 
 </style>
-
-
-
-
 
 <?php
 
