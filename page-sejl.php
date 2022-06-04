@@ -224,7 +224,7 @@ text-transform: uppercase;
 
 /* knap styling herunder (gælder alle knapper) */
 button {
-color: #304950; 
+color: #191919; 
 background-color: #e98b3d;
 border: none; 
 letter-spacing: 6px;
